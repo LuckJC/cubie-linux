@@ -160,9 +160,9 @@ build_modules()
     make -C modules/nand LICHEE_MOD_DIR=${LICHEE_MOD_DIR} LICHEE_KDIR=${LICHEE_KDIR} \
         install
 
-    build_hdmi_lib
-    make -C drivers/video/sun7i/hdmi/aw LICHEE_MOD_DIR=${LICHEE_MOD_DIR} LICHEE_KDIR=${LICHEE_KDIR} \
-    install
+    #build_hdmi_lib
+    #make -C drivers/video/sun7i/hdmi/aw LICHEE_MOD_DIR=${LICHEE_MOD_DIR} LICHEE_KDIR=${LICHEE_KDIR} \
+    #install
 
     copy_nand_mod
 

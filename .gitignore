@@ -94,3 +94,5 @@ arch/arm/mach-sun7i/pm/standby/super/resume/*.code
 arch/arm/mach-sun7i/pm/standby/super/suspend/*.code
 modules/nand/Module.symvers
 modules/example/Module.symvers
+modules/mali/DX910-SW-99002-r3p2-01rel2/driver/src/devicedrv/ump/arch/arch-ca8-virtex820-m400-1
+rootfs/rootfs.cpio.gz
