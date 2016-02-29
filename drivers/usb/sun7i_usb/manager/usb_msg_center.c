@@ -174,7 +174,9 @@ static void insmod_host_driver(struct usb_msg_center_info *center_info)
 	DMSG_INFO("\n\ninsmod_host_driver\n\n");
 
 	set_usb_role(center_info, USB_ROLE_HOST);
+#if defined(CONFIG_USB_SW_SUN7I_USB0_OTG) || defined(USB_SW_SUN7I_USB0_HOST_ONLY)
 	sw_usb_host0_enable();
+#endif
 
 	return;
 }
@@ -203,11 +205,13 @@ static void rmmod_host_driver(struct usb_msg_center_info *center_info)
 
 	DMSG_INFO("\n\nrmmod_host_driver\n\n");
 
+#if defined(CONFIG_USB_SW_SUN7I_USB0_OTG) || defined(USB_SW_SUN7I_USB0_HOST_ONLY)
 	ret = sw_usb_host0_disable();
 	if(ret != 0){
     	DMSG_PANIC("err: disable hcd0 failed\n");
     	return;
 	}
+#endif
 
 	set_usb_role(center_info, USB_ROLE_NULL);
 

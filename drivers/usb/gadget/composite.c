@@ -1503,6 +1503,8 @@ static int composite_bind(struct usb_gadget *gadget)
 		goto fail;
 
 	INFO(cdev, "%s ready\n", composite->name);
+	usb_gadget_connect(cdev->gadget);
+	printk("usb_gadget_connect\n");
 	return 0;
 
 fail:

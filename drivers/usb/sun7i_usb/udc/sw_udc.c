@@ -3152,7 +3152,11 @@ static struct sw_udc sw_udc = {
 
 int sw_usb_device_enable(void)
 {
+#ifdef CONFIG_USB_SW_SUN7I_USB0_OTG
 	struct platform_device *pdev = g_udc_pdev;
+#else
+	struct platform_device *pdev = NULL;
+#endif
 	struct sw_udc  	*udc    = &sw_udc;
 	int           	retval  = 0;
 	int            	irq     = AW_IRQ_USB0;
@@ -3227,7 +3231,11 @@ int sw_usb_device_disable(void)
 __releases(sw_udc.lock)
 __acquires(sw_udc.lock)
 {
+#ifdef CONFIG_USB_SW_SUN7I_USB0_OTG
 	struct platform_device *pdev = g_udc_pdev;
+#else
+	struct platform_device *pdev = NULL;
+#endif
 	struct sw_udc *udc 	= NULL;
 	unsigned long	flags = 0;
 
@@ -3298,7 +3306,9 @@ static int sw_udc_probe_otg(struct platform_device *pdev)
 {
 	struct sw_udc  	*udc = &sw_udc;
 
+#ifdef CONFIG_USB_SW_SUN7I_USB0_OTG
 	g_udc_pdev = pdev;
+#endif
 
 	spin_lock_init (&udc->lock);
 
@@ -3342,7 +3352,9 @@ static int sw_udc_remove_otg(struct platform_device *pdev)
 {
 	struct sw_udc *udc 	= NULL;
 
+#ifdef CONFIG_USB_SW_SUN7I_USB0_OTG
 	g_udc_pdev = NULL;
+#endif
 
 	udc = platform_get_drvdata(pdev);
 	if (udc->driver){
